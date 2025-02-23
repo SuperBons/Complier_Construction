@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../../../All_Desktop_Folders/CSE111/Complier_Construction"
+		},
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../../../Downloads/all_tests"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Lab 1"
+	}
+}
