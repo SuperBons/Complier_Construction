@@ -44,6 +44,7 @@ public class Scanner {
 					writer.print(tokenPair.getValue());
 				}
 			}
+			
 			writer.close();
 		} catch (FileNotFoundException e) {
 			System.err.println("Could not create output file");

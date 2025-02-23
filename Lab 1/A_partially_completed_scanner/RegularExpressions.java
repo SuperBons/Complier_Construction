@@ -8,7 +8,6 @@
  */
 public class RegularExpressions {
 	
-	
 	// Array of reserved words
 	private String [] reservedWords = {"int","void","if","while","return","read","write","print","continue","break","binary",
 			"decimal"};
@@ -41,9 +40,9 @@ public class RegularExpressions {
 	 */
 	private boolean isDigit(char c) {
 		// TODO: Implement the recognition of digits 
-
-		
-
+		if (c >= '0' && c <= '9') return true;
+	
+		return false;
 	}
 	
 	/**
@@ -52,8 +51,19 @@ public class RegularExpressions {
 	 * @param str The input string that is being pasrsed which will be read one charecter at a time
 	 * @return boolean indicating if it is an identifier
 	 */
-	public boolean isIdentifier(String str) {		
-		// TODO: Implement the recognition of identifiers 
+	public boolean isIdentifier(String str) {
+		if (str == null || str.isEmpty()) return false;
+	
+		char x = str.charAt(0);
+		if (!Character.isLetter(x) && x != '_') return false;
+	
+	
+		for (int i = 1; i < str.length(); i++) {
+			char y = str.charAt(i);
+			if (!Character.isLetterOrDigit(y) && y != '_') return false;
+		}
+	
+		return true;
 	}
 
 	/***
@@ -64,6 +74,16 @@ public class RegularExpressions {
 	 */
 	public boolean isNumber(String str) {
 		// TODO: Implement the recognition of numbers 
+
+		if (str.length() == 0) {
+			return false;
+		}
+		for ( int i = 0; i < str.length(); i++) {
+			if (!isDigit(str.charAt(i))) {
+				return false;
+			}
+		}
+		return true; 
 	}
 	
 	/***
@@ -74,6 +94,13 @@ public class RegularExpressions {
 	 */
 	public boolean isReservedWord(String str) {
 		// TODO: Implement the recognition of reserved words
+		for ( int i = 0; i < reservedWords.length; i++) {
+			if (str.equals(reservedWords[i])){ 
+				return true;
+			}
+				
+		}
+		return false;
 	}
 	
 	/***
@@ -83,6 +110,11 @@ public class RegularExpressions {
 	 */
 	public boolean isSymbol(String str) {
 		// TODO: Implement the recognition of symbols
+
+		for ( int i = 0; i < symbols.length; i++){ 
+			if(str.equals(symbols[i])) return true; 
+		}
+		return false; 
 	}
 	
 	/**
@@ -93,6 +125,10 @@ public class RegularExpressions {
 	 */
 	public boolean isString(String str) {
 		// TODO: Implement the recognition of strings
+		if (str == null || str.length() < 2) {
+			return false;
+		}
+		return str.charAt(0) == '"' && str.charAt(str.length() - 1) == '"';
 	}
 	
 	/**
@@ -102,6 +138,14 @@ public class RegularExpressions {
 	 */
 	public boolean isMetaStatement(String str) {
 		// TODO: Implement the recognition of meta statements
-	}
-
+		if (str == null) {
+			return false;
+		}
+		if (str.startsWith("#")) {
+			return true;
+		}
+		if (str.startsWith("//")) {
+			return true;
+		}
+		return false;	}
 }
