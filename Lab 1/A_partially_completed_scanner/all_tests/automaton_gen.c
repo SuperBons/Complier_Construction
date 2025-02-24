@@ -8,6 +8,8 @@ void cse141state_1(void);
 void cse141state_2(void);
 void cse141state_3(void);
 
+
+
 // function to get the next digit
 int cse141getnextdigit(void) 
 {

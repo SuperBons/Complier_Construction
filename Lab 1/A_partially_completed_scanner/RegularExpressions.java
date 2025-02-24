@@ -41,7 +41,6 @@ public class RegularExpressions {
 	private boolean isDigit(char c) {
 		// TODO: Implement the recognition of digits 
 		if (c >= '0' && c <= '9') return true;
-	
 		return false;
 	}
 	
@@ -53,14 +52,17 @@ public class RegularExpressions {
 	 */
 	public boolean isIdentifier(String str) {
 		if (str == null || str.isEmpty()) return false;
-	
-		char x = str.charAt(0);
-		if (!Character.isLetter(x) && x != '_') return false;
-	
+
+		char first = str.charAt(0);
+		if (!((first >= 'A' && first <= 'Z') || (first >= 'a' && first <= 'z')) && first != '_') {
+			return false;
+		}
 	
 		for (int i = 1; i < str.length(); i++) {
-			char y = str.charAt(i);
-			if (!Character.isLetterOrDigit(y) && y != '_') return false;
+			char ch = str.charAt(i);
+			if (!((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <= '9')) && ch != '_') {
+				return false;
+			}
 		}
 	
 		return true;
